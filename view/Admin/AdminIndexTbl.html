@@ -1,0 +1,59 @@
+<div class="col-lg-8 bodyContainer" ng-controller="ManagementCtrl" data-ng-init="init()" >
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="page-header">
+                <h3>Admin Management</h3>
+            </div>
+            <div class="panel-body">
+                <div >
+                    <select class="wrap-dd-select "  ng-options="option as option.text for option in ddSelectOptions"
+                            ng-model="selectedItem" ng-change="getData(selectedItem.value)"
+                            placeholder="aaa"></select>
+                   <!--<div dropdown-select="ddSelectOptions" dropdown-model="ddSelectSelected" style="float: left; "></div>-->
+                    <a class="wrap-dd-select " href="#/createAticle/" data-target="#" style="float: right;display: block; padding: 10px">Create a new article</a>
+                </div>
+                <div >
+                    {{displayed}}
+                    <table st-table="displayed" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th st-ratio="10" st-sort="Id">Id</th>
+                            <th st-ratio="70" st-sort="Title">Tiêu đề</th>
+                            <th st-ratio="20">Thao tác</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">
+                                <input st-search="Title" placeholder="search for Title" class="input-sm form-control" type="search"/>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="row in displayed">
+                            <td st-ratio="10">{{row.Id}}</td>
+                            <td st-ratio="70">{{row.Title}}</td>
+                            <td st-ratio="20">
+                                <button style="float: left;" type="button" ng-click="edit(row.Id)" class="btn btn-sm btn-warning">
+                                    <i class="glyphicon glyphicon-pencil">
+                                    </i>
+                                </button>
+                                <button style="float: left; display: inline; margin-left: 2%" type="button" ng-click="delete(row.Id)" class="btn btn-sm btn-danger">
+                                    <i class="glyphicon glyphicon-remove-sign">
+                                    </i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <div st-items-by-page="10" st-pagination="" st-template="lib/smartTable/pagination.custom.html"></div>
+
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

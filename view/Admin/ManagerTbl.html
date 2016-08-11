@@ -1,0 +1,81 @@
+
+<div class="col-lg-8 bodyContainer" ng-controller="ManagementCtrl" data-ng-init="init()" >
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="page-header">
+                <h3>Create new Article</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" name="contentForm" enctype="multipart/form-data"  >
+                    <div class="form-group ">
+                        <label class="control-label col-sm-2" >Title:</label>
+                        <div class="col-sm-10 ">
+                            <input type="text" class="form-control " name="title" ng-model="contents.title" placeholder="Enter title" required>
+                            <br>
+                            <span class="error" ng-show="contentForm.title.$dirty && contentForm.title.$invalid">
+                              <span ng-show="contentForm.title.$error.required" >Title is required.</span>
+                              </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="brief">Brief:</label>
+                        <div class="col-sm-10">
+                            <textarea ng-model="contents.brief" name="brief" type="text" class="form-control" rows="5" id="brief" placeholder="Enter brief" required></textarea>
+                            <br>
+                             <span class="error" ng-show="contentForm.brief.$dirty && contentForm.brief.$invalid">
+                              <span ng-show="contentForm.brief.$error.required">Brief is required.</span>
+                              </span>
+                        </div>
+                    </div>
+                   <div class="form-group">
+                        <label class="control-label col-sm-2">Contents:</label>
+                        <div class="col-sm-10">
+                            <text-angular ng-model="contents.contents" name="contents" id="contents" placeholder="Enter contents" required></text-angular>
+                            <br>
+                            <span class="error" ng-show="contentForm.contents.$dirty && contentForm.contents.$invalid">
+                            <span ng-show="contentForm.contents.$error.required">Content is required.</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label col-sm-2" >Category:</label>
+                        <div class="col-sm-10 ">
+                            <div class="float-left" dropdown-select="ddSelectOptions" dropdown-model="ddSelectSelected"></div>
+                        <br>
+                            <div id="categoryError" class="error hidden">Category is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label col-sm-2" >Keyword:</label>
+                        <div class="col-sm-10 ">
+                            <input type="text" class="form-control " name="keyword" ng-model="contents.keyword" placeholder="Enter keyword" required>
+                        </div>
+                    </div>
+                    <div class="fo
+
+                    rm-group">
+                        <label class="control-label col-sm-2" >Image:</label>
+                        <div class="col-sm-10">
+                            <input type="file" nv-file-select="" ccept="image/*" uploader="uploader" multiple  />
+                            <!--<input id="file" ngf-select="" ng-model="contents.file" name="file" accept="image/*" type="file">-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" ng-click='submit(contents)' class="btn btn-warning right" ng-disabled='contentForm.title.$invalid || contentForm.brief.$invalid || contentForm.contents.$invalid' >Submit</button>
+                            <a class="btn btn-danger right " href="#/admin/" data-target="#" >Cancel</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ErrorPopup" class="hidden">
+    <div class="error alert-danger">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Warning!</strong> Không lưu được.
+    </div>
+</div>
