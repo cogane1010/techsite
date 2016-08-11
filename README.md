@@ -4,6 +4,8 @@ This project is intended to be a basic AngularJS site template for learning Angu
 with working samples of some methods needed for a basic AngularJS Site with a user login, and with basic authorization for 
 Rest Services.
 
+Project using angular and slim php framework 
+
 This project build by Nguyen Hoang
 Any feedback sent to cogane1010@gmail.com
 
